@@ -7,23 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.Service",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.IService", "Newcats.Framework.IService\Newcats.Framework.IService.csproj", "{5F276EB6-2C57-474D-88D1-5ADB1EA96B95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.Model", "Newcats.Framework.Model\Newcats.Framework.Model.csproj", "{E9D02876-89A1-469F-8FDA-1E78C0123851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.Model", "Newcats.Framework.Model\Newcats.Framework.Model.csproj", "{E9D02876-89A1-469F-8FDA-1E78C0123851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.IRepository", "Newcats.Framework.IRepository\Newcats.Framework.IRepository.csproj", "{829DEB46-7CAA-4000-B35D-E90320C7AD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.IRepository", "Newcats.Framework.IRepository\Newcats.Framework.IRepository.csproj", "{829DEB46-7CAA-4000-B35D-E90320C7AD6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.Repository", "Newcats.Framework.Repository\Newcats.Framework.Repository.csproj", "{EC4B80AB-FEB5-423A-8A3C-D918B8F1B434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.Repository", "Newcats.Framework.Repository\Newcats.Framework.Repository.csproj", "{EC4B80AB-FEB5-423A-8A3C-D918B8F1B434}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.Aggregate", "Newcats.Framework.Aggregate\Newcats.Framework.Aggregate.csproj", "{B33D7C42-15BD-4F21-8F9B-ECCB35FA5BCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.Aggregate", "Newcats.Framework.Aggregate\Newcats.Framework.Aggregate.csproj", "{B33D7C42-15BD-4F21-8F9B-ECCB35FA5BCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.IAggregate", "Newcats.Framework.IAggregate\Newcats.Framework.IAggregate.csproj", "{BB0D4B33-726D-4849-9B1B-E0AB14AAD882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.IAggregate", "Newcats.Framework.IAggregate\Newcats.Framework.IAggregate.csproj", "{BB0D4B33-726D-4849-9B1B-E0AB14AAD882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.Proxy", "Newcats.Framework.Proxy\Newcats.Framework.Proxy.csproj", "{6472DA54-2B29-4305-ABE2-05478B0C672E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.ThirdParty", "Newcats.Framework.ThirdParty\Newcats.Framework.ThirdParty.csproj", "{97CB351F-E007-4B2C-B9EB-FDBC144282E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.IProxy", "Newcats.Framework.IProxy\Newcats.Framework.IProxy.csproj", "{19955A07-5CD9-4E46-A9E3-3ACE6F64ABCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newcats.Framework.Api", "Newcats.Framework.Api\Newcats.Framework.Api.csproj", "{22337FF3-EB33-4651-911F-D5F967A5CC92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.ThirdParty", "Newcats.Framework.ThirdParty\Newcats.Framework.ThirdParty.csproj", "{97CB351F-E007-4B2C-B9EB-FDBC144282E8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.Api", "Newcats.Framework.Api\Newcats.Framework.Api.csproj", "{22337FF3-EB33-4651-911F-D5F967A5CC92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newcats.Framework.Client", "Newcats.Framework.Client\Newcats.Framework.Client.csproj", "{74819068-50A7-4728-B506-480AD57512D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,14 +57,6 @@ Global
 		{BB0D4B33-726D-4849-9B1B-E0AB14AAD882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB0D4B33-726D-4849-9B1B-E0AB14AAD882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB0D4B33-726D-4849-9B1B-E0AB14AAD882}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6472DA54-2B29-4305-ABE2-05478B0C672E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6472DA54-2B29-4305-ABE2-05478B0C672E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6472DA54-2B29-4305-ABE2-05478B0C672E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6472DA54-2B29-4305-ABE2-05478B0C672E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19955A07-5CD9-4E46-A9E3-3ACE6F64ABCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19955A07-5CD9-4E46-A9E3-3ACE6F64ABCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19955A07-5CD9-4E46-A9E3-3ACE6F64ABCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19955A07-5CD9-4E46-A9E3-3ACE6F64ABCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97CB351F-E007-4B2C-B9EB-FDBC144282E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97CB351F-E007-4B2C-B9EB-FDBC144282E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97CB351F-E007-4B2C-B9EB-FDBC144282E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +65,10 @@ Global
 		{22337FF3-EB33-4651-911F-D5F967A5CC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22337FF3-EB33-4651-911F-D5F967A5CC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22337FF3-EB33-4651-911F-D5F967A5CC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74819068-50A7-4728-B506-480AD57512D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74819068-50A7-4728-B506-480AD57512D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74819068-50A7-4728-B506-480AD57512D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74819068-50A7-4728-B506-480AD57512D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
