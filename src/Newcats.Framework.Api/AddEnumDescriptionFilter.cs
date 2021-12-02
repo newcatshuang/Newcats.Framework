@@ -7,11 +7,11 @@
  *Github: https://github.com/newcatshuang
  *Copyright NewcatsHuang All rights reserved.
 *****************************************************************************/
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Newcats.Utils.Models;
-using Newcats.Utils.Extensions;
 using System.Collections.Concurrent;
+using Microsoft.OpenApi.Models;
+using Newcats.Utils.Extensions;
+using Newcats.Utils.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Newcats.Framework.Api;
 
@@ -29,17 +29,17 @@ public class AddEnumDescriptionFilter : ISchemaFilter
     {
         if (context.Type.IsEnum)
         {
-            var list = GetAllEnumDescriptions(context.Type);
+            var list = Utils.Helpers.EnumHelper.GetAllEnumDescriptions(context.Type);
             if (list != null && list.Count > 0)
             {
-                string des = string.Join("|", list.Select(s => $"{s.Value}={s.Name}({s.Description})"));
+                string des = string.Join(",", list.Select(s => s.Name.Equals(s.Description, StringComparison.OrdinalIgnoreCase) ? $"{s.Value}={s.Name}" : $"{s.Value}={s.Name}({s.Description})"));
                 schema.Description = schema.Description.IsNullOrWhiteSpace() ? des : $"{schema.Description}:{des}";
             }
-            //else if (context.Type.IsClass && context.Type != typeof(string))
-            //{
-            //    UpdateSchemaDescription(schema, context);
-            //}
         }
+        //else if (context.Type.IsClass && context.Type != typeof(string))
+        //{
+        //    //UpdateSchemaDescription(schema, context);
+        //}
     }
 
     private void UpdateSchemaDescription(OpenApiSchema schema, SchemaFilterContext context)
@@ -49,10 +49,10 @@ public class AddEnumDescriptionFilter : ISchemaFilter
             var s = context.SchemaRepository.Schemas[schema.Reference.Id];
             if (s != null && s.Enum != null && s.Enum.Count > 0)
             {
-                if (!string.IsNullOrEmpty(s.Description))
+                if (!string.IsNullOrWhiteSpace(s.Description))
                 {
-                    string description = $"【{s.Description}】";
-                    if (string.IsNullOrEmpty(schema.Description) || !schema.Description.EndsWith(description))
+                    string description = $"[{s.Description}]";
+                    if (string.IsNullOrWhiteSpace(schema.Description) || !schema.Description.EndsWith(description))
                     {
                         schema.Description += description;
                     }
@@ -65,25 +65,5 @@ public class AddEnumDescriptionFilter : ISchemaFilter
             var s = schema.Properties[key];
             UpdateSchemaDescription(s, context);
         }
-    }
-
-    private List<EnumDescription> GetAllEnumDescriptions(Type type)
-    {
-        if (!type.IsEnum)
-            return null;
-        List<EnumDescription> list = new List<EnumDescription>();
-        if (_cache.TryGetValue(type.FullName, out list))
-        {
-            if (list != null && list.Count > 0)
-                return list;
-        }
-        list = new List<EnumDescription>();
-        foreach (Enum e in Enum.GetValues(type))
-        {
-            list.Add(e.GetEnumDescription());
-        }
-
-        _cache.TryAdd(type.FullName, list);
-        return list;
     }
 }
