@@ -31,10 +31,10 @@ public class AddEnumDescriptionFilter : ISchemaFilter
                 schema.Description = schema.Description.IsNullOrWhiteSpace() ? des : $"{schema.Description}:{des}";
             }
         }
-        //else if (context.Type.IsClass && context.Type != typeof(string))
-        //{
-        //    //UpdateSchemaDescription(schema, context);
-        //}
+        else if (context.Type.IsClass && context.Type != typeof(string))
+        {
+            UpdateSchemaDescription(schema, context);
+        }
     }
 
     private void UpdateSchemaDescription(OpenApiSchema schema, SchemaFilterContext context)
