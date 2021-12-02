@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Newcats.Framework.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,14 +19,22 @@ namespace Newcats.Framework.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        /// <summary>
+        /// 获取温度
+        /// </summary>
+        /// <param name="season">季节</param>
+        /// <returns></returns>
+        [HttpGet]
+        [SwaggerResponse(200, Type = typeof(WeatherForecast))]
+        public IEnumerable<WeatherForecast> Get(SeasonEnum season)
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)],
+                Season = season,
+                Gender = Model.GenderEnum.Man
             })
             .ToArray();
         }
