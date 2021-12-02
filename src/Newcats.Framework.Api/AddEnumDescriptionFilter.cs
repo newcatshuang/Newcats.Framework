@@ -20,11 +20,6 @@ namespace Newcats.Framework.Api;
 /// </summary>
 public class AddEnumDescriptionFilter : ISchemaFilter
 {
-    /// <summary>
-    /// 缓存，键为类的全名
-    /// </summary>
-    private static readonly ConcurrentDictionary<string, List<EnumDescription>> _cache = new ConcurrentDictionary<string, List<EnumDescription>>();
-
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.Type.IsEnum)
