@@ -30,10 +30,14 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    c.SchemaFilter<AddEnumDescriptionFilter>();
-    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
-    //c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Newcats.Framework.Model.xml"));
-    //TODO:Summary注释(xml文件)和AddEnumDescriptionFilter不能两全
+    //项目文件添加<PropertyGroup><GenerateDocumentationFile>true</GenerateDocumentationFile></PropertyGroup>
+    var xmls = AddEnumDescriptionFilter.GetAllXmlFileFullNames(AppContext.BaseDirectory);
+    if (xmls != null && xmls.Count > 0)
+    {
+        xmls.ForEach(xml => c.IncludeXmlComments(xml));
+    }
+
+    c.SchemaFilter<AddEnumDescriptionFilter>();//过滤器要放到xml文件后面
 });
 
 var app = builder.Build();

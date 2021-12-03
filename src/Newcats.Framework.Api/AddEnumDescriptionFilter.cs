@@ -7,10 +7,8 @@
  *Github: https://github.com/newcatshuang
  *Copyright NewcatsHuang All rights reserved.
 *****************************************************************************/
-using System.Collections.Concurrent;
 using Microsoft.OpenApi.Models;
 using Newcats.Utils.Extensions;
-using Newcats.Utils.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Newcats.Framework.Api;
@@ -20,6 +18,11 @@ namespace Newcats.Framework.Api;
 /// </summary>
 public class AddEnumDescriptionFilter : ISchemaFilter
 {
+    /// <summary>
+    /// 给Swagger文档的枚举添加描述
+    /// </summary>
+    /// <param name="schema">OpenApiSchema</param>
+    /// <param name="context">SchemaFilterContext</param>
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.Type.IsEnum)
@@ -31,34 +34,25 @@ public class AddEnumDescriptionFilter : ISchemaFilter
                 schema.Description = schema.Description.IsNullOrWhiteSpace() ? des : $"{schema.Description}:{des}";
             }
         }
-        else if (context.Type.IsClass && context.Type != typeof(string))
-        {
-            UpdateSchemaDescription(schema, context);
-        }
     }
 
-    private void UpdateSchemaDescription(OpenApiSchema schema, SchemaFilterContext context)
+    /// <summary>
+    /// 获取指定路径下的xml文件
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public static List<string> GetAllXmlFileFullNames(string path)
     {
-        if (schema.Reference != null)
+        List<string> list = new();
+        DirectoryInfo directory = new(path);
+        var files = directory.GetFiles("*.xml");
+        if (files != null && files.Length > 0)
         {
-            var s = context.SchemaRepository.Schemas[schema.Reference.Id];
-            if (s != null && s.Enum != null && s.Enum.Count > 0)
+            foreach (var file in files)
             {
-                if (!string.IsNullOrWhiteSpace(s.Description))
-                {
-                    string description = $"[{s.Description}]";
-                    if (string.IsNullOrWhiteSpace(schema.Description) || !schema.Description.EndsWith(description))
-                    {
-                        schema.Description += description;
-                    }
-                }
+                list.Add(file.FullName);
             }
         }
-
-        foreach (var key in schema.Properties.Keys)
-        {
-            var s = schema.Properties[key];
-            UpdateSchemaDescription(s, context);
-        }
+        return list;
     }
 }
